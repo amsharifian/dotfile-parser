@@ -1,0 +1,5 @@
+name := "dotfile"
+version := "1.0"
+scalaVersion := "2.11.8"
+resolvers += "bintray-drdozer" at "http://dl.bintray.com/content/drdozer/maven"
+libraryDependencies += "uk.co.turingatemyhamster" %% "gv-core" % "0.3.2"

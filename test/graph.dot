@@ -1,0 +1,5 @@
+strict digraph g {
+lacI [ shape = box ]
+tetR [ shape = box ]
+lacI -> tetR [ label = represses ]
+}
