@@ -10,4 +10,6 @@ class Node (cid :Int, copcode :String, ctype :String, cvalue :Int ){
   val OpCode :String = copcode
   val Type:String = ctype
   val value :Int = cvalue
+
+  override def toString: String = "Node(" + ID + "): " + OpCode
 }

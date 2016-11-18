@@ -1,4 +1,7 @@
 import scala.io.Source
+import Graph.Node
+import Graph.Edge
+
 import scala.util.matching.Regex
 
 //val pattern = "shape".r
@@ -54,8 +57,25 @@ val lines = Source.fromFile(fname).getLines().toList
 val nodes = lines.filter(filterNode).map(returnNode)
 val edges = lines.filter(filterEdge).map(returnEdge)
 
-nodes.foreach(println)
-edges.foreach(println)
+
+
+def makeNode(n: (String, String, String, String)) : Node = {
+  val new_node:Node = new Node(n._1.toInt, n._2, n._3, n._4.toInt)
+  new_node
+}
+
+def makeEdge(e: (String, String)): Edge = {
+  val new_edge: Edge = new Edge(e._1.toInt, e._2.toInt)
+  new_edge
+}
+
+
+val n = nodes.map(makeNode)
+val m = edges.map(makeEdge)
+
+n.foreach(println)
+//
+
 //
 //    println(f.next())
 

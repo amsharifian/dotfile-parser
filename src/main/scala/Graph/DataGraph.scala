@@ -7,7 +7,7 @@ import scala.util.matching.Regex
   * Created by amirali
   *
   */
-class Graph(fname :String) {
+class DataGraph(fname :String) {
 
   private def filterNode(line :String) = {
     val pattern = """(\d+)\s*\[label=.*$""".r
