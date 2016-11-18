@@ -15,12 +15,21 @@ object main {
 
   def main(args: Array[String]) {
 
-    //pattern(id,label,opcode,type,value) = 
-    //val pattern = """(\d+).*$""".r
+	val g = StrictDigraph(
+	  id = "g",
+	  "lacI" :| ("shape" := "box"),
+	  "tetR" :| ("shape" := "box"),
+	  "lacI" --> "tetR" :| ("label" := "represses")
+	)
+	
+	println("Input graph:")
+	renderGraph(g, System.out)
+
+
+
 
     for(line <- Source.fromFile("test/out.dot").getLines()){
         
-        //println(line)
         val rsnode: String = pattern findFirstIn line match {
           case Some(pattern(id, label, opcode, ty, va)) => "Res: " + id + "," + label + "," + opcode + "," + ty + "," + va
           case None                                     => ""
@@ -29,7 +38,6 @@ object main {
         if(!isEmpty(rsnode)){
           println(rsnode)
         }
-        //println(rsnode)
         
         val rsedge: String = edge findFirstIn line match {
           case Some(edge(src, tar)) => "Res: " + src+ "," + tar
@@ -38,26 +46,7 @@ object main {
         if(!isEmpty(rsedge)){
           println(rsedge)
         }
-        //println(rsedge)
-        //val pattern(id) = line
-        //pattern(id,label,opcode,ty,value) = line
-        //println((pattern findFirstIn line).mkString(","))
-        //println((pattern findAllMatchIn line).mkString(","))
-        //if(!isEmpty((pattern findAllMatchIn line).mkString(",")))
-          //println(line)
-          //line match {
-            //case pattern(label, opcode, type, value) => 
-          //}
     }
-    //val g = StrictDigraph(
-      //id = "g",
-      //"lacI" :| ("shape" := "box"),
-      //"tetR" :| ("shape" := "box"),
-      //"lacI" --> "tetR" :| ("label" := "represses")
-    //)
-    
-    //println("Input graph:")
-    //renderGraph(g, System.out)
   }
 }
 
