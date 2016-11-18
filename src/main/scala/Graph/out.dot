@@ -1,0 +1,35 @@
+digraph {
+0 [label="0", opcode="const", type="Int64", value="0"]
+1 [label="1", opcode="const", type="Int64", value="1"]
+2 [label="2", opcode="const", type="Int64", value="2"]
+3 [label="3", opcode="const", type="Int64", value="3"]
+4 [label="4", opcode="const", type="Int64", value="4"]
+5 [label="5 add", opcode="add", type="Int64", value="5"]
+1 -> 5
+0 -> 5
+6 [label="6 add", opcode="add", type="Int64", value="6"]
+4 -> 6
+3 -> 6
+7 [label="7 add", opcode="add", type="Int64", value="7"]
+2 -> 7
+0 -> 7
+8 [label="8 add", opcode="add", type="Int64", value="8"]
+1 -> 8
+2 -> 8
+13 [label="13 add", opcode="add", type="Int64", value="13"]
+5 -> 13
+3 -> 13
+14 [label="14 add", opcode="add", type="Int64", value="14"]
+7 -> 14
+8 -> 14
+17 [label="17 add", opcode="add", type="Int64", value="17"]
+13 -> 17
+3 -> 17
+19 [label="19 add", opcode="add", type="Int64", value="19"]
+17 -> 19
+6 -> 19
+20 [label="20 add", opcode="add", type="Int64", value="20"]
+19 -> 20
+14 -> 20
+
+}
