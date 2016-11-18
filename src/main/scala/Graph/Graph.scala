@@ -44,9 +44,22 @@ class Graph(fname :String) {
     (src, target)
   }
 
+  private def makeNode(n: (String, String, String, String)) : Node = {
+    val new_node:Node = new Node(n._1.toInt, n._2, n._3, n._4.toInt)
+    new_node
+  }
+
+  private def makeEdge(e: (String, String)): Edge = {
+    val new_edge: Edge = new Edge(e._1.toInt, e._2.toInt)
+    new_edge
+  }
+
 
   val Nodes = Source.fromFile(fname).getLines.toList.filter(filterNode).map(returnNode)
   val Edges = Source.fromFile(fname).getLines.toList.filter(filterEdge).map(returnEdge)
+
+  val NodeList :List[Node] = Nodes.map(makeNode)
+  val EdgeList :List[Edge] = Edges.map(makeEdge)
 
 
 }
