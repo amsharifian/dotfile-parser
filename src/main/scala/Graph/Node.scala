@@ -3,8 +3,6 @@ package Graph
 /**
   * Created by amirali
   */
-
-
 class Node (cid :Int, copcode :String, ctype :String, cvalue :Int ){
   val ID :Int = cid
   val OpCode :String = copcode
