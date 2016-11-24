@@ -2,6 +2,7 @@ package Graph
 
 import scala.io.Source
 import scala.util.matching.Regex
+import scala.collection.mutable.ListBuffer
 
 /**
   * Created by amirali
@@ -54,12 +55,24 @@ class DataGraph(fname :String) {
     new_edge
   }
 
-
   val Nodes = Source.fromFile(fname).getLines.toList.filter(filterNode).map(returnNode)
   val Edges = Source.fromFile(fname).getLines.toList.filter(filterEdge).map(returnEdge)
 
   val NodeList :List[Node] = Nodes.map(makeNode)
   val EdgeList :List[Edge] = Edges.map(makeEdge)
 
+  val imporTarget = ListBuffer.empty[Int]
+
+  for(e <- EdgeList){
+    if(NodeList.find(x => (x.ID == e.Tar)).get.NType)
+      e.dir = true
+    else
+      if(!imporTarget.exists(x => x == e.Tar))
+        e.dir = false
+      else
+        e.dir = true
+        imporTarget += e.Tar
+
+  }
 
 }
