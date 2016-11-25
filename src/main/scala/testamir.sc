@@ -1,5 +1,4 @@
 import Graph._
-import DFG._
 
 import chisel3._
 import chisel3.util.unless
