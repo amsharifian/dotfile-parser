@@ -1,9 +1,7 @@
-package DFG
-
+package axc
 import chisel3._
 import chisel3.util.unless
 import chisel3.util.Enum
-
 /**
   * Created by amirali on 23/11/16.
   */

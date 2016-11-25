@@ -61,10 +61,11 @@ class DataGraph(fname :String) {
   val NodeList :List[Node] = Nodes.map(makeNode)
   val EdgeList :List[Edge] = Edges.map(makeEdge)
 
+  //Fixing edge direction
   val imporTarget = ListBuffer.empty[Int]
 
   for(e <- EdgeList){
-    if(NodeList.find(x => (x.ID == e.Tar)).get.NType)
+    if(NodeList.find(x => (x.ID == e.Src)).get.NType)
       e.dir = true
     else
       if(!imporTarget.exists(x => x == e.Tar))
@@ -75,4 +76,9 @@ class DataGraph(fname :String) {
 
   }
 
+  //Fixing single or double problem
+  for(e <- EdgeList) {
+    if (NodeList.find(x => (x.ID == e.Src)).get.NType)
+      NodeList.find(x => (x.ID == e.Tar)).get.single = true
+  }
 }

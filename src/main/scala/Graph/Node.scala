@@ -9,11 +9,7 @@ class Node (cid :Int, copcode :String, ctype :String, cvalue :Int ){
   val Type:String = ctype
   val value :Int = cvalue
   val NType :Boolean = setType(ctype)
-  val Target :Boolean = false
-
-  def isTarget(): Boolean = {
-    Target
-  }
+  var single:Boolean = false
 
   private def setType(ty : String): Boolean = {
     if(ty == "const") true else false
