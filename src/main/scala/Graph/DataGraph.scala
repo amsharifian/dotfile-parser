@@ -55,30 +55,39 @@ class DataGraph(fname :String) {
     new_edge
   }
 
+  def findById(n : Int): Node = {
+    val fnode: Node = NodeList.find(x => x.ID == n).get
+    fnode
+  }
+
+
   val Nodes = Source.fromFile(fname).getLines.toList.filter(filterNode).map(returnNode)
   val Edges = Source.fromFile(fname).getLines.toList.filter(filterEdge).map(returnEdge)
 
   val NodeList :List[Node] = Nodes.map(makeNode)
   val EdgeList :List[Edge] = Edges.map(makeEdge)
 
+  val SrcSet : Set[Int] = EdgeList.map(x => x.Tar).toSet
+  val TarSet : Set[Int] = EdgeList.map(x => x.Src).toSet
+
   //Fixing edge direction
-  val imporTarget = ListBuffer.empty[Int]
-
-  for(e <- EdgeList){
-    if(NodeList.find(x => (x.ID == e.Src)).get.NType)
-      e.dir = true
-    else
-      if(!imporTarget.exists(x => x == e.Tar))
-        e.dir = false
-      else
-        e.dir = true
-        imporTarget += e.Tar
-
-  }
+//  val imporTarget = ListBuffer.empty[Int]
+//
+//  for(e <- EdgeList){
+//    if(NodeList.find(x => (x.ID == e.Src)).get.NType)
+//      e.dir = true
+//    else
+//      if(!imporTarget.exists(x => x == e.Tar))
+//        e.dir = false
+//      else
+//        e.dir = true
+//        imporTarget += e.Tar
+//
+//  }
 
   //Fixing single or double problem
-  for(e <- EdgeList) {
-    if (NodeList.find(x => (x.ID == e.Src)).get.NType)
-      NodeList.find(x => (x.ID == e.Tar)).get.single = true
-  }
+//  for(e <- EdgeList) {
+//    if (NodeList.find(x => (x.ID == e.Src)).get.NType)
+//      NodeList.find(x => (x.ID == e.Tar)).get.single = true
+//  }
 }

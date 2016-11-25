@@ -8,12 +8,11 @@ class Node (cid :Int, copcode :String, ctype :String, cvalue :Int ){
   val OpCode :String = copcode
   val Type:String = ctype
   val value :Int = cvalue
-  val NType :Boolean = setType(ctype)
+  val constStat :Int = isConst(copcode)
   var single:Boolean = false
 
-  private def setType(ty : String): Boolean = {
-    if(ty == "const") true else false
+  def isConst(c: String) :Int = {
+    if (c == "const") 1 else 0
   }
-
-  override def toString: String = "Node(" + ID + "): " + OpCode
+  override def toString: String = "Node(" + ID + "): " + OpCode + " Val: " + constStat
 }
